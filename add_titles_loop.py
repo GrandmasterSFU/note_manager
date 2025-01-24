@@ -4,4 +4,7 @@ while True:
     if a == '' or a == 'stop':
         break
     headers.append(a)
-print(f'Основные детейлс заметки: {', '.join(headers)}')
+print(f'Основные детейлс заметки: {", ".join(headers)}')
+
+
+a = 'хЕРНЯ'
