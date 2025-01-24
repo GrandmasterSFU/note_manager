@@ -7,4 +7,3 @@ while True:
 print(f'Основные детейлс заметки: {", ".join(headers)}')
 
 
-a = 'хЕРНЯ'
