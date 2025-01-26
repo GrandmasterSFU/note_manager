@@ -1,25 +1,34 @@
-print('Добро пожаловать в менеджер заметок! Вы можете добавить новую заметку')
-note_list = []
-note ={
-        'title': None,
-        'content': None,
-    }
-while True:
-    tittle = input('Введите название заметки')
-    if tittle == 'YES':
-    qa = input('Хотите ли вы создать новую заметку? ')
-    if qa == 'YES':
-        username = input('Введите имя пользователя: ')
-        tittle = input('Введите заголовок заметки: ')
-        content = input('Введите описание заметки: ')
-        note['title'] = tittle
-        note['content'] = content
-        print('Заметка успешно создана!')
-    note_list.append(note)
-    if qa == 'NO':
-        break
-    content = input('Введите содержание заметки')
-    status = input('Введите статус заметки')
+from update_status import manage_status
+from datetime import datetime as dt
 
-    note.update()
-print(note)
+
+def multiply_notes():
+    id_ = 0
+    note_list = []
+    print('Добро пожаловать в менеджер заметок! Вы можете добавить новую заметку')
+    while True:
+        qa = input('Хотите ли вы создать новую заметку? ')
+        if qa == 'YES':
+            id_ += 1
+            username = input('Введите имя пользователя: ')
+            tittle = input('Введите заголовок заметки: ')
+            content = input('Введите описание заметки: ')
+            status_ = manage_status()
+            note_deadline = dt.strptime(input('Введите дату дедлайна: '), '%d-%m-%Y')
+            note_list.append(
+                {'ID заметки': id_,
+                 "Имя пользователя": username,
+                 'Заголовок': tittle,
+                 'Описание': content,
+                 'Статус': status_,
+                 'Дата создания': dt.today(),
+                 'Дедлайн': note_deadline,
+                 }
+            )
+            print('Заметка успешно создана!')
+        if qa == 'NO':
+            break
+    return note_list
+
+
+print(multiply_notes())
