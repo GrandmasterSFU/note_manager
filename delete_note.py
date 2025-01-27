@@ -1,3 +1,5 @@
+from enum import nonmember
+
 notes_list = [
     {
         'username': 'User 1',
@@ -18,31 +20,18 @@ notes_list = [
         'status': 'в процессе',
     }
 ]
-
+for i in notes_list[:]:
+    print(i)
 while True:
-    intr = input('Хотите ли вы удалить заметки?')
-    if intr == 'да':
-        query = input('Укажите критерий для удаления: Заголовок или Имя пользователя ')
-        if query == 'Заголовок':
-            title_to_delete = input('Укажите заголовок заметки для удаления: ')
-            for note in notes_list:
-                if note['title'] == title_to_delete:
-                    notes_list.remove(note)
-                    print('Заметка успешно удалена.')
-                    break
-            else:
-                print('Заметка не найдена.')
-
-        if query == 'Имя пользователя':
-            title_to_delete = input('Укажите имя пользователя заметки для удаления: ')
-            for note in notes_list:
-                if note['username'] == title_to_delete:
-                    notes_list.remove(note)
-                    print('Заметка успешно удалена.')
-                    break
-            else:
-                print('Заметка не найдена.')
-        else:
-            print('Критерий не определен')
-    if intr == 'нет': break
+    quary = input('Хотите ли вы удалить заметки?').lower()
+    if quary == 'да':
+        while True:
+            title_to_delete = input('Укажите заголовок или имя пользователя заметки для удаления: ').lower()
+            for note in range(len(notes_list)):
+                if notes_list[note]['title'].lower() == title_to_delete or notes_list[note]['username'].lower() == title_to_delete:
+                    del notes_list[note]
+                    print(f'Заметка успешно удалена, остались следующие заметки: {notes_list}')
+            if False:
+                print('Заметка по таким критериям не найдена')
+    if quary == 'нет': break
 print(notes_list)
