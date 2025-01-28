@@ -1,5 +1,4 @@
-from enum import nonmember
-
+# Удаление заметок
 notes_list = [
     {
         'username': 'User 1',
@@ -20,18 +19,20 @@ notes_list = [
         'status': 'в процессе',
     }
 ]
+
 for i in notes_list[:]:
     print(i)
 while True:
-    quary = input('Хотите ли вы удалить заметки?').lower()
-    if quary == 'да':
-        while True:
-            title_to_delete = input('Укажите заголовок или имя пользователя заметки для удаления: ').lower()
-            for note in range(len(notes_list)):
-                if notes_list[note]['title'].lower() == title_to_delete or notes_list[note]['username'].lower() == title_to_delete:
-                    del notes_list[note]
-                    print(f'Заметка успешно удалена, остались следующие заметки: {notes_list}')
-            if False:
-                print('Заметка по таким критериям не найдена')
-    if quary == 'нет': break
-print(notes_list)
+    qa = input('Хотите ли вы удалить заметки? ').lower()
+    if qa == 'да':
+        removal_criteria = input('Укажите заголовок или имя пользователя заметки для удаления: ')
+        for i, d in enumerate(notes_list):
+            if d['title'].lower() == removal_criteria.lower() or d['username'].lower() == removal_criteria.lower():
+                del notes_list[i]
+                print(f'Заметка успешно удалена, остались следующие заметки: {notes_list}')
+            else:
+                break
+        print('Заметка по таким критериям не найдена')
+        break
+    if qa == 'нет': break
+

@@ -1,3 +1,4 @@
+# Работа с несколькими заметками
 from update_status import manage_status
 from datetime import datetime as dt
 
@@ -7,8 +8,8 @@ def multiply_notes():
     note_list = []
     print('Добро пожаловать в менеджер заметок! Вы можете добавить новую заметку')
     while True:
-        qa = input('Хотите ли вы создать новую заметку? ')
-        if qa == 'YES':
+        qa = input('Хотите ли вы создать новую заметку? ').lower()
+        if qa == 'да':
             id_ += 1
             username = input('Введите имя пользователя: ')
             tittle = input('Введите заголовок заметки: ')
@@ -26,7 +27,7 @@ def multiply_notes():
                  }
             )
             print('Заметка успешно создана!')
-        if qa == 'NO':
+        if qa == 'нет':
             break
     return note_list
 

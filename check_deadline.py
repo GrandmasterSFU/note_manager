@@ -11,5 +11,5 @@ def deadline():
     elif days_until_deadline == 0:
         print(f'Дедлайн сегодня!')
     else:
-        print(f'Дедлайн просрочен')
+        print(f'Дедлайн истек {days_until_deadline} дня(ей) назад')
     return days_until_deadline
